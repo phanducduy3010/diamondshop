@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet"type="text/css" href="/css/login.css">
     <title>Login</title>
 </head>
 
@@ -18,38 +18,40 @@
     <h2 id="Play-with-Sign-In-fo"> Play with Sign-In form to get a feel of how Frames master file works. Every component has its own attributes and styles which can be customized and changed to make a unique experience.</h2>
 
 
-    <form class="Login">
+    <form class="Login" th:action="@{/j_spring_security_check}" method="POST">
         <p id="Sign-In">Sign In</p>
 
-        <img id="Exit" src="icons/close.png">
+        <img id="Exit" src="/images/close.svg">
 
         <p id="text-login">Login</p>
 
         <p id="text-password">Passsword</p>
 
-        <label for="username" id="label-username"></label> <input type="text" id="username" name="username" placeholder="hello@robowolf.net ">
-
-        <label for="password" id="label-password"></label> <input type="password" id="password" name="password" placeholder="123456 ">
-
-        <img id="checked" src="icons/checked.png">
-
-        <img id="locked" src="icons/locked.png">
-
-        <button id="button-login">Login</button>
 
 
 
-        <button id="button-login-facebook"><span>Continue with Facebook</span><img id="facebook-image" src="icons/facebook.png"></button>
+
+        <label for="username" id="label-username"></label> <input type="text" id="username" name="username">
+
+        <label for="password" id="label-password"></label> <input type="password" id="password" name="password">
+
+        <img id="checked" src="/images/checked.svg">
+
+        <img id="locked" src="/images/lock.svg">
+        <div th:if="${param.error}" id="alert-error">Invalid username or password.
+        </div>
+
+        <button id="button-login" type="submit" value="Log In">Login</button>
+
+        <button id="button-login-facebook"><span>Continue with Facebook</span><img id="facebook-image" src="/images/facebook.svg"></button>
 
         <p id="forgot-password">Forgot your password?</p>
     </form>
 
 
-    <img src="icons/data-logo-robowolf.svg" id="logo-image">
+    <img src="/images/data-logo-robowolf.svg" id="logo-image">
     <p id="text-bottom">Visit robowolf.net/frames for the full version and additional information.</p>
 </div>
-<script src="script.js"></script>
 </body>
-
 
 </html>
